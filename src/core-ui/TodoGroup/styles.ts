@@ -6,11 +6,7 @@ import {
   todoGroupBGColor,
 } from "../../constants/styles"
 
-type StyledTodoGroupProps = {
-  pinned?: boolean
-}
-
-export const StyledTodoGroup = styled.div<StyledTodoGroupProps>`
+export const StyledTodoGroup = styled.div`
   position: relative;
   padding: ${defaultPadding};
   background-color: ${todoGroupBGColor};

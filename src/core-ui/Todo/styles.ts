@@ -11,7 +11,7 @@ import {
 } from "../../constants/styles"
 
 type StyledTodoProps = {
-  complete: boolean
+  isComplete: boolean
   isGrouped: boolean
   labelColor?: string
 }
@@ -24,7 +24,7 @@ export const StyledTodo = styled.div<StyledTodoProps>`
 
   /* Changing the bg-color based on complete and grouped props */
   background-color: ${(props) =>
-    props.complete
+    props.isComplete
       ? props.isGrouped
         ? completeTodoGroupedBGColor
         : completeTodoBGColor
@@ -72,8 +72,8 @@ export const StyledTodo = styled.div<StyledTodoProps>`
   }
 
   .Todo-Text {
-    text-decoration: ${(props) => (props.complete ? "line-through" : "")};
-    opacity: ${(props) => (props.complete ? "0.5" : "")};
+    text-decoration: ${(props) => (props.isComplete ? "line-through" : "")};
+    opacity: ${(props) => (props.isComplete ? "0.5" : "")};
   }
 `
 

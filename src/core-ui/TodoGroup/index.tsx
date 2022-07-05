@@ -1,31 +1,29 @@
 import React, { FunctionComponent } from "react"
 import { IconButton } from ".."
+import { ITodo } from "../../interfaces"
 import { StyledTodoGroup, TodoGroupTitle } from "./styles"
 
 type Props = {
   name: string
+  isPinned: boolean
+  children?: React.ReactNode
   onPinButtonClick: React.MouseEventHandler<HTMLButtonElement>
   onMenuButtonClick: React.MouseEventHandler<HTMLButtonElement>
-  pinned?: boolean
-  children?: React.ReactNode
 }
 
 const TodoGroup: FunctionComponent<Props> = (props) => {
-  // Adds new props to the children
+  // Adds isGrouped props to the children
   const childrenWithProps = React.Children.map(props.children, (child) => {
-    if (React.isValidElement(child))
-      return React.cloneElement(child, {
-        pinned: props.pinned,
-        isGrouped: true,
-      })
+    if (!React.isValidElement(child)) return child
 
-    return child
+    const newTodo: ITodo = { ...child.props.todo, isGrouped: true }
+    return React.cloneElement(child, { todo: newTodo })
   })
 
   return (
-    <StyledTodoGroup pinned={props.pinned || false}>
+    <StyledTodoGroup>
       {/* Adding pin icon if the todo group is pinned */}
-      {props.pinned && (
+      {props.isPinned && (
         <IconButton
           className="Todo-Group-Pin-Button"
           src="images/pin.svg"

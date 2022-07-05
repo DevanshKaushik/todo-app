@@ -13,6 +13,7 @@ import {
   lightYellowColor,
   primaryColor,
 } from "../../constants/styles"
+import { ITodo } from "../../interfaces"
 import {
   StyledTodo,
   TodoComplete,
@@ -31,12 +32,7 @@ export const TodoLabelColor = {
 }
 
 type Props = {
-  text: string
-  complete?: boolean
-  isGrouped?: boolean
-  pinned?: boolean
-  deadline?: Date
-  labelColor?: string
+  todo: ITodo
   onComplete: ChangeEventHandler<HTMLInputElement>
   onDelete: MouseEventHandler<HTMLButtonElement>
   onPinButtonClick: MouseEventHandler<HTMLButtonElement>
@@ -45,16 +41,18 @@ type Props = {
 
 const Todo: FunctionComponent<Props> = (props) => {
   const formattedDate =
-    props.deadline &&
-    `${Months[props.deadline.getMonth()]} ${props.deadline.getDate()}`
+    props.todo.deadlineDate &&
+    `${
+      Months[props.todo.deadlineDate.getMonth()]
+    } ${props.todo.deadlineDate.getDate()}`
 
   return (
     <StyledTodo
-      complete={props.complete || false}
-      isGrouped={props.isGrouped || false}
+      isComplete={props.todo.isComplete}
+      isGrouped={props.todo.isGrouped}
     >
       {/* Adding pin icon if the todo is pinned and not in a group */}
-      {props.pinned && !props.isGrouped && (
+      {props.todo.isPinned && !props.todo.isGrouped && (
         <IconButton
           className="Todo-Pin-Button"
           src="images/pin.svg"
@@ -65,20 +63,20 @@ const Todo: FunctionComponent<Props> = (props) => {
       )}
 
       {/* Adding label icon if the label color is defined */}
-      {props.labelColor && (
+      {props.todo.labelColor && (
         <IconButton
           className="Todo-Label"
           src="images/label.svg"
           size="1.6rem"
           noPadding
-          color={props.labelColor}
+          color={props.todo.labelColor}
           onClick={() => {}}
           notTabable
         />
       )}
 
       <TodoTop>
-        <TodoText className="Todo-Text">{props.text}</TodoText>
+        <TodoText className="Todo-Text">{props.todo.text}</TodoText>
         <IconButton
           className="Todo-Delete-Button"
           src="images/delete.svg"
@@ -91,7 +89,7 @@ const Todo: FunctionComponent<Props> = (props) => {
         <div style={{ display: "flex" }}>
           <TodoComplete
             type="checkbox"
-            checked={props.complete}
+            checked={props.todo.isComplete}
             onChange={(e) => {
               props.onComplete(e)
             }}

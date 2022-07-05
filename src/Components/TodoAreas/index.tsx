@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useEffect, useState } from "react"
 import { useResizeDetector } from "react-resize-detector"
 import { defaultGap } from "../../constants/styles"
-import Todo from "../../core-ui/Todo"
+import { TodoGroup } from "../../core-ui"
+import Todo, { TodoLabelColor } from "../../core-ui/Todo"
 import { TodoAreasColumn, TodoAreasTitle, StyledTodoAreas } from "./styles"
 
 export enum TodoAreasCategory {
@@ -45,15 +46,27 @@ const TodoAreas: FunctionComponent<Props> = (props) => {
             columnGap={columnGap}
             rowGap={rowGap}
           >
-            <Todo
-              text="Refactor the todo app"
-              deadline={new Date()}
-              pinned={props.category === TodoAreasCategory.PINNED}
-              onComplete={() => {}}
-              onDelete={() => {}}
+            <TodoGroup
+              name="Test Group"
+              isPinned
               onMenuButtonClick={() => {}}
               onPinButtonClick={() => {}}
-            />
+            >
+              <Todo
+                todo={{
+                  text: "Refactor the todo app",
+                  deadlineDate: new Date(),
+                  labelColor: TodoLabelColor.GREEN,
+                  isComplete: false,
+                  isPinned: props.category === TodoAreasCategory.PINNED,
+                  isGrouped: false,
+                }}
+                onComplete={() => {}}
+                onDelete={() => {}}
+                onMenuButtonClick={() => {}}
+                onPinButtonClick={() => {}}
+              />
+            </TodoGroup>
           </TodoAreasColumn>
         ))}
       </div>
