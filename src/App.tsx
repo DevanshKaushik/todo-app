@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import { AddTodo, FilterTodo, SideBar, TodoAreas } from "./components"
+import { TodoAreasCategory } from "./components/TodoAreas"
+import "./styles/app.css"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SideBar />
+      <main>
+        <div className="Add-Todo-Container">
+          <AddTodo />
+          <FilterTodo />
+        </div>
+        <TodoAreas
+          category={TodoAreasCategory.PINNED}
+          columnGap={30}
+          rowGap={40}
+          columnWidth={340}
+        />
+      </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
