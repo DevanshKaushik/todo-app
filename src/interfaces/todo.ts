@@ -1,6 +1,7 @@
 export type HexColorString = string
 
 export interface ITodo {
+  id: string
   text: string
   isComplete: boolean
   isPinned: boolean
