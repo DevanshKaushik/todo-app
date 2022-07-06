@@ -79,6 +79,7 @@ export const StyledTodo = styled.div<StyledTodoProps>`
 
 export const TodoText = styled.p`
   font-size: 1.6rem;
+  word-break: break-all;
 `
 
 export const TodoBottom = styled.div`
