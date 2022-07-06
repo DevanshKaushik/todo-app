@@ -48,4 +48,11 @@ export const TodoGroupTitle = styled.div`
   justify-content: space-between;
   font-size: 2.2rem;
   font-weight: bold;
+
+  span {
+    white-space: nowrap;
+    overflow-x: clip;
+    text-overflow: ellipsis;
+    margin-right: 1rem;
+  }
 `
