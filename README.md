@@ -2,6 +2,10 @@
 
 This is a todos management app created for managing your day-to-day works as well as the professional work requirements.
 
+This is the current UI Design
+
+![UI Design](./demo/ui_design.png)
+
 ## Features
 
 - Todos can be dragged and dropped in any order.
