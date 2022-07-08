@@ -1,8 +1,4 @@
-import React, {
-  ChangeEventHandler,
-  FunctionComponent,
-  MouseEventHandler,
-} from "react"
+import React, { FunctionComponent } from "react"
 import { IconButton } from ".."
 import { Months } from "../../constants/dateTime"
 import {
@@ -13,7 +9,8 @@ import {
   lightYellowColor,
   primaryColor,
 } from "../../constants/styles"
-import { ITodo } from "../../interfaces"
+import { useMenuButton } from "../../helpers/useMenuButton"
+import { IMenuItem, ITodo } from "../../interfaces"
 import {
   StyledTodo,
   TodoComplete,
@@ -33,9 +30,11 @@ export const TodoLabelColor = {
 
 type Props = {
   todo: ITodo
-  onComplete: ChangeEventHandler<HTMLInputElement>
-  onDelete: MouseEventHandler<HTMLButtonElement>
-  onPinButtonClick: MouseEventHandler<HTMLButtonElement>
+  onComplete: () => void
+  onDelete: () => void
+  onPin: () => void
+  onUnpin: () => void
+  onCopy: () => void
 }
 
 const Todo: FunctionComponent<Props> = (props) => {
@@ -44,6 +43,19 @@ const Todo: FunctionComponent<Props> = (props) => {
     `${
       Months[props.todo.deadlineDate.getMonth()]
     } ${props.todo.deadlineDate.getDate()}`
+
+  // Setting up the menu items
+  const menuItems: IMenuItem[] = [
+    props.todo.isPinned
+      ? props.todo.isGrouped
+        ? { item: "Unpin group", action: props.onUnpin }
+        : { item: "Unpin", action: props.onUnpin }
+      : { item: "Pin", action: props.onPin },
+    { item: "Delete", action: props.onDelete },
+    { item: "Make a copy", action: props.onCopy },
+  ]
+
+  const { menuButtonClickHandler } = useMenuButton(menuItems)
 
   return (
     <StyledTodo
@@ -57,7 +69,7 @@ const Todo: FunctionComponent<Props> = (props) => {
           src="images/pin.svg"
           size="2rem"
           noPadding
-          onClick={props.onPinButtonClick}
+          onClick={props.onUnpin}
         />
       )}
 
@@ -89,9 +101,7 @@ const Todo: FunctionComponent<Props> = (props) => {
           <TodoComplete
             type="checkbox"
             checked={props.todo.isComplete}
-            onChange={(e) => {
-              props.onComplete(e)
-            }}
+            onChange={props.onComplete}
           />
           {formattedDate && (
             <TodoDeadline tabIndex={0}>{formattedDate}</TodoDeadline>
@@ -100,7 +110,7 @@ const Todo: FunctionComponent<Props> = (props) => {
         <IconButton
           className="Todo-Menu-Button"
           src="images/menu-horizontal.svg"
-          onClick={() => {}}
+          onClick={menuButtonClickHandler}
         />
       </TodoBottom>
     </StyledTodo>

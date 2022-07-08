@@ -1,12 +1,17 @@
 import React, { FunctionComponent } from "react"
 import { IconButton } from ".."
-import { ITodo, ITodoGroup } from "../../interfaces"
+import { useMenuButton } from "../../helpers/useMenuButton"
+import { IMenuItem, ITodo, ITodoGroup } from "../../interfaces"
 import { StyledTodoGroup, TodoGroupTitle } from "./styles"
 
 type Props = {
   todoGroup: ITodoGroup
   children?: React.ReactNode
-  onPinButtonClick: React.MouseEventHandler<HTMLButtonElement>
+  onPin: () => void
+  onUnpin: () => void
+  onDelete: () => void
+  onUngroup: () => void
+  onCopy: () => void
 }
 
 const TodoGroup: FunctionComponent<Props> = (props) => {
@@ -22,6 +27,18 @@ const TodoGroup: FunctionComponent<Props> = (props) => {
     return React.cloneElement(child, { todo: newTodo })
   })
 
+  // Setting up the menu items
+  const menuItems: IMenuItem[] = [
+    props.todoGroup.isPinned
+      ? { item: "Unpin", action: props.onUnpin }
+      : { item: "Pin", action: props.onPin },
+    { item: "Delete", action: props.onDelete },
+    { item: "Make a copy", action: props.onCopy },
+    { item: "Ungroup", action: props.onUngroup },
+  ]
+
+  const { menuButtonClickHandler } = useMenuButton(menuItems)
+
   return (
     <StyledTodoGroup>
       {/* Adding pin icon if the todo group is pinned */}
@@ -31,7 +48,7 @@ const TodoGroup: FunctionComponent<Props> = (props) => {
           src="images/pin.svg"
           size="2rem"
           noPadding
-          onClick={props.onPinButtonClick}
+          onClick={props.onUnpin}
         />
       )}
 
@@ -40,7 +57,7 @@ const TodoGroup: FunctionComponent<Props> = (props) => {
         <IconButton
           className="Todo-Group-Menu-Button"
           src="images/menu.svg"
-          onClick={() => {}}
+          onClick={menuButtonClickHandler}
         />
       </TodoGroupTitle>
 

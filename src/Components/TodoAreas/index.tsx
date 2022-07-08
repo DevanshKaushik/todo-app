@@ -32,7 +32,11 @@ const createColumnsWithTodos = (
     >
       <TodoGroup
         todoGroup={{ id: uuid(), name: "Test Group", isPinned: true }}
-        onPinButtonClick={() => {}}
+        onPin={() => {}}
+        onUnpin={() => {}}
+        onDelete={() => {}}
+        onUngroup={() => {}}
+        onCopy={() => {}}
       >
         <Todo
           todo={{
@@ -46,7 +50,9 @@ const createColumnsWithTodos = (
           }}
           onComplete={() => {}}
           onDelete={() => {}}
-          onPinButtonClick={() => {}}
+          onPin={() => {}}
+          onUnpin={() => {}}
+          onCopy={() => {}}
         />
       </TodoGroup>
     </TodoAreasColumn>

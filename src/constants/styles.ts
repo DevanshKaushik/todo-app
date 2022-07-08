@@ -1,6 +1,7 @@
 // Color
 export const primaryColor = "#2b9cff"
 export const sideBarColor = "#121418"
+export const menuContainerColor = "#202124"
 
 export const hoverOverlayColor = "rgba(255, 255, 255, 0.1)"
 export const componentOverlayColor = "rgba(255, 255, 255, 0.16)"
@@ -35,4 +36,4 @@ export const largeBorderRadius = "8px"
 export const defaultTransitionSpeed = "0.1s"
 
 // Width
-export const todoGroupWidth = "34rem"
+export const menuContainerWidth = 200

@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  SyntheticEvent,
-  useEffect,
-  useReducer,
-} from "react"
+import React, { FunctionComponent, useEffect, useReducer } from "react"
 import { v4 as uuid } from "uuid"
 
 import { IconButton } from "../../core-ui"
@@ -15,6 +10,8 @@ import {
   WorkspaceList,
   WorkspaceItem,
 } from "./styles"
+import { IMenuItem } from "../../interfaces"
+import { useMenuButton } from "../../helpers/useMenuButton"
 
 interface Workspace {
   id: string
@@ -116,6 +113,16 @@ const Workspaces: FunctionComponent = () => {
     })
   }
 
+  // Setting up the menu items
+  const menuItems: IMenuItem[] = [
+    { item: "Delete", action: () => {} },
+    { item: "Rename", action: () => {} },
+    { item: "Make a copy", action: () => {} },
+    { item: "Set active", action: () => {} },
+  ]
+
+  const { menuButtonClickHandler } = useMenuButton(menuItems)
+
   return (
     <StyledWorkspace>
       <WorkspaceTitle>
@@ -141,8 +148,9 @@ const Workspaces: FunctionComponent = () => {
             <IconButton
               className="Workspace-Item-Menu-Button"
               src="images/menu.svg"
-              onClick={(e: SyntheticEvent) => {
+              onClick={(e: React.MouseEvent) => {
                 e.stopPropagation()
+                menuButtonClickHandler(e)
               }}
             />
           </WorkspaceItem>

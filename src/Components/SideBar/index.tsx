@@ -13,4 +13,4 @@ const SideBar: FunctionComponent = () => {
   )
 }
 
-export default SideBar
+export default React.memo(SideBar)
