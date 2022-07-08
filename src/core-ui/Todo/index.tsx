@@ -36,7 +36,6 @@ type Props = {
   onComplete: ChangeEventHandler<HTMLInputElement>
   onDelete: MouseEventHandler<HTMLButtonElement>
   onPinButtonClick: MouseEventHandler<HTMLButtonElement>
-  onMenuButtonClick: MouseEventHandler<HTMLButtonElement>
 }
 
 const Todo: FunctionComponent<Props> = (props) => {
@@ -101,7 +100,7 @@ const Todo: FunctionComponent<Props> = (props) => {
         <IconButton
           className="Todo-Menu-Button"
           src="images/menu-horizontal.svg"
-          onClick={props.onMenuButtonClick}
+          onClick={() => {}}
         />
       </TodoBottom>
     </StyledTodo>

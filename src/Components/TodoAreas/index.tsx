@@ -32,7 +32,6 @@ const createColumnsWithTodos = (
     >
       <TodoGroup
         todoGroup={{ id: uuid(), name: "Test Group", isPinned: true }}
-        onMenuButtonClick={() => {}}
         onPinButtonClick={() => {}}
       >
         <Todo
@@ -47,7 +46,6 @@ const createColumnsWithTodos = (
           }}
           onComplete={() => {}}
           onDelete={() => {}}
-          onMenuButtonClick={() => {}}
           onPinButtonClick={() => {}}
         />
       </TodoGroup>

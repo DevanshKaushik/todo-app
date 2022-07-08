@@ -7,7 +7,6 @@ type Props = {
   todoGroup: ITodoGroup
   children?: React.ReactNode
   onPinButtonClick: React.MouseEventHandler<HTMLButtonElement>
-  onMenuButtonClick: React.MouseEventHandler<HTMLButtonElement>
 }
 
 const TodoGroup: FunctionComponent<Props> = (props) => {
@@ -41,7 +40,7 @@ const TodoGroup: FunctionComponent<Props> = (props) => {
         <IconButton
           className="Todo-Group-Menu-Button"
           src="images/menu.svg"
-          onClick={props.onMenuButtonClick}
+          onClick={() => {}}
         />
       </TodoGroupTitle>
 
