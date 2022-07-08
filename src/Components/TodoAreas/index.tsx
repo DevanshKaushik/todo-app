@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react"
+import React, { FunctionComponent, useEffect, useMemo, useState } from "react"
 import { TodoAreasColumn, TodoAreasTitle, StyledTodoAreas } from "./styles"
 
 import { v4 as uuid } from "uuid"
@@ -18,9 +18,44 @@ type Props = {
   rowGap: number
 }
 
-const TodoAreas: FunctionComponent<Props> = (props) => {
-  console.count("TODO AREAS")
+const createColumnsWithTodos = (
+  columnCount: number,
+  columnWidth: number,
+  columnGap: number,
+  rowGap: number
+) => {
+  return [...Array(columnCount)].map(() => (
+    <TodoAreasColumn
+      columnWidth={columnWidth}
+      columnGap={columnGap}
+      rowGap={rowGap}
+    >
+      <TodoGroup
+        todoGroup={{ id: uuid(), name: "Test Group", isPinned: true }}
+        onMenuButtonClick={() => {}}
+        onPinButtonClick={() => {}}
+      >
+        <Todo
+          todo={{
+            id: uuid(),
+            text: "Test todo text",
+            deadlineDate: new Date(),
+            labelColor: TodoLabelColor.GREEN,
+            isComplete: false,
+            isPinned: true,
+            isGrouped: false,
+          }}
+          onComplete={() => {}}
+          onDelete={() => {}}
+          onMenuButtonClick={() => {}}
+          onPinButtonClick={() => {}}
+        />
+      </TodoGroup>
+    </TodoAreasColumn>
+  ))
+}
 
+const TodoAreas: FunctionComponent<Props> = (props) => {
   // Setting up column count based on the available space
   const [columnCount, setColumnCount] = useState<number>(1)
   const { width: containerWidth, ref } = useResizeObserver<HTMLDivElement>()
@@ -35,40 +70,21 @@ const TodoAreas: FunctionComponent<Props> = (props) => {
     setColumnCount(newColumnCount)
   }, [columnCount, containerWidth, props.columnGap, props.columnWidth])
 
+  // Using memoization to create todo columns
+  // Changes when column count changes
+  const todoColumns = useMemo(() => {
+    return createColumnsWithTodos(
+      columnCount,
+      props.columnWidth,
+      props.columnGap,
+      props.rowGap
+    )
+  }, [columnCount, props.columnGap, props.columnWidth, props.rowGap])
+
   return (
     <StyledTodoAreas ref={ref}>
       <TodoAreasTitle>{props.category}</TodoAreasTitle>
-      <div>
-        {[...Array(columnCount)].map(() => (
-          <TodoAreasColumn
-            columnWidth={props.columnWidth}
-            columnGap={props.columnGap}
-            rowGap={props.rowGap}
-          >
-            <TodoGroup
-              todoGroup={{ id: uuid(), isPinned: true, name: "Test Group" }}
-              onMenuButtonClick={() => {}}
-              onPinButtonClick={() => {}}
-            >
-              <Todo
-                todo={{
-                  id: uuid(),
-                  text: "Refactor the todo app",
-                  deadlineDate: new Date(),
-                  labelColor: TodoLabelColor.GREEN,
-                  isComplete: false,
-                  isPinned: props.category === TodoAreasCategory.PINNED,
-                  isGrouped: false,
-                }}
-                onComplete={() => {}}
-                onDelete={() => {}}
-                onMenuButtonClick={() => {}}
-                onPinButtonClick={() => {}}
-              />
-            </TodoGroup>
-          </TodoAreasColumn>
-        ))}
-      </div>
+      <div>{todoColumns}</div>
     </StyledTodoAreas>
   )
 }
