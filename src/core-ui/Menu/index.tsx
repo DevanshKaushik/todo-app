@@ -31,9 +31,12 @@ const Menu = forwardRef<HTMLUListElement, Props>((props, ref) => {
 
   return (
     <StyledMenu ref={ref} left={posX} top={props.posY}>
-      {props.menuItems.map((menuItem) => {
+      {props.menuItems.map((menuItem, index) => {
         return (
-          <MenuItem onClick={() => menuItemClickHandler(menuItem)}>
+          <MenuItem
+            key={`menu-item-${index}`}
+            onClick={() => menuItemClickHandler(menuItem)}
+          >
             {menuItem.item}
           </MenuItem>
         )
