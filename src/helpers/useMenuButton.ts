@@ -2,10 +2,10 @@ import { IMenuItem } from "../interfaces"
 import useMenuStore from "../stores/menu"
 
 export const useMenuButton = (menuItems: IMenuItem[]) => {
-  const setMenuItems = useMenuStore((state) => state.setMenuItems)
-  const setMenuVisible = useMenuStore((state) => state.setMenuVisible)
-  const setMenuPosX = useMenuStore((state) => state.setMenuPosX)
-  const setMenuPosY = useMenuStore((state) => state.setMenuPosY)
+  const setMenuItems = useMenuStore((state) => state.setItems)
+  const setMenuVisible = useMenuStore((state) => state.setVisible)
+  const setMenuPosX = useMenuStore((state) => state.setPosX)
+  const setMenuPosY = useMenuStore((state) => state.setPosY)
 
   const menuButtonClickHandler = (e: React.MouseEvent) => {
     const boundingRect = e.currentTarget.getBoundingClientRect()

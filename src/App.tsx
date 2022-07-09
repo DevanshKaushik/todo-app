@@ -25,11 +25,11 @@ const Main = React.memo(() => {
 
 function App() {
   // Setting up the menu properties
-  const menuItems = useMenuStore((state) => state.menuItems)
-  const menuVisible = useMenuStore((state) => state.menuVisible)
-  const setMenuVisible = useMenuStore((state) => state.setMenuVisible)
-  const menuPosX = useMenuStore((state) => state.menuPosX)
-  const menuPosY = useMenuStore((state) => state.menuPosY)
+  const menuItems = useMenuStore((state) => state.items)
+  const menuVisible = useMenuStore((state) => state.visible)
+  const setMenuVisible = useMenuStore((state) => state.setVisible)
+  const menuPosX = useMenuStore((state) => state.posX)
+  const menuPosY = useMenuStore((state) => state.posY)
 
   // Handling menu close on click outside of it
   const menuRef = useRef<HTMLUListElement>(null)
@@ -54,10 +54,12 @@ function App() {
       <Main />
       <Menu
         ref={menuRef}
-        menuItems={menuItems}
-        posX={menuPosX}
-        posY={menuPosY}
-        visible={menuVisible}
+        menu={{
+          items: menuItems,
+          posX: menuPosX,
+          posY: menuPosY,
+          visible: menuVisible,
+        }}
       />
     </div>
   )

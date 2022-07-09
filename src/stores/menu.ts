@@ -1,28 +1,23 @@
 import create from "zustand"
 import { IMenuItem } from "../interfaces"
+import { IMenu } from "../interfaces/menu"
 
-interface MenuState {
-  menuItems: IMenuItem[]
-  menuVisible: boolean
-  menuPosX: number
-  menuPosY: number
-  setMenuItems: (menuItems: IMenuItem[]) => void
-  setMenuVisible: (menuVisible: boolean) => void
-  setMenuPosX: (menuPosX: number) => void
-  setMenuPosY: (menuPosY: number) => void
+interface MenuState extends IMenu {
+  setItems: (items: IMenuItem[]) => void
+  setVisible: (visible: boolean) => void
+  setPosX: (posX: number) => void
+  setPosY: (posY: number) => void
 }
 
 const useMenuStore = create<MenuState>((set) => ({
-  menuItems: [],
-  menuVisible: false,
-  menuPosX: 0,
-  menuPosY: 0,
-  setMenuItems: (menuItems: IMenuItem[]) =>
-    set(() => ({ menuItems: menuItems })),
-  setMenuVisible: (menuVisible: boolean) =>
-    set(() => ({ menuVisible: menuVisible })),
-  setMenuPosX: (menuPosX: number) => set(() => ({ menuPosX: menuPosX })),
-  setMenuPosY: (menuPosY: number) => set(() => ({ menuPosY: menuPosY })),
+  items: [],
+  visible: false,
+  posX: 0,
+  posY: 0,
+  setItems: (items: IMenuItem[]) => set(() => ({ items: items })),
+  setVisible: (visible: boolean) => set(() => ({ visible: visible })),
+  setPosX: (posX: number) => set(() => ({ posX: posX })),
+  setPosY: (posY: number) => set(() => ({ posY: posY })),
 }))
 
 export default useMenuStore
