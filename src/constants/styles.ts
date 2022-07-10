@@ -1,42 +1,51 @@
-// Color
-export const primaryColor = "#2b9cff"
-export const sideBarColor = "#121418"
-export const menuContainerColor = "#202124"
+export const colors = {
+  primaryColor: "#2b9cff",
+  sideBarColor: "#121418",
+  menuContainerColor: "#202124",
 
-export const hoverOverlayColor = "rgba(255, 255, 255, 0.1)"
-export const componentOverlayColor = "rgba(255, 255, 255, 0.16)"
+  hoverOverlayColor: "rgba(255, 255, 255, 0.1)",
+  componentOverlayColor: "rgba(255, 255, 255, 0.16)",
 
-export const todoBGColor = "#595c60"
-export const completeTodoBGColor = "#2d3136"
-export const completeTodoGroupedBGColor = "#222427"
-export const todoGroupBGColor = "#303338"
+  todoBGColor: "#595c60",
+  completeTodoBGColor: "#2d3136",
+  completeTodoGroupedBGColor: "#222427",
+  todoGroupBGColor: "#303338",
 
-export const lightRedColor = "#ff6767"
-export const lightGreenColor = "#67ff9b"
-export const lightYellowColor = "#fcff67"
-export const lightPinkColor = "#e088ff"
-export const lightOrangeColor = "#ff8c67"
-export const lightGreyColor = "#bfbfbf"
-export const lightCyanColor = "#67fff6"
-export const lightPurpleColor = "#857bfa"
+  light: {
+    redColor: "#ff6767",
+    greenColor: "#67ff9b",
+    yellowColor: "#fcff67",
+    pinkColor: "#e088ff",
+    orangeColor: "#ff8c67",
+    greyColor: "#bfbfbf",
+    cyanColor: "#67fff6",
+    purpleColor: "#857bfa",
+  },
+}
 
-// Padding
-export const smallPadding = "1.5rem"
-export const defaultPadding = "2.5rem"
-export const largePadding = "4rem"
+export const paddings = {
+  smallPadding: "1.5rem",
+  defaultPadding: "2.5rem",
+  largePadding: "4rem",
+}
 
-// Gap
-export const defaultGap = 30
+export const gaps = {
+  defaultGap: 30,
+}
 
-// Outline
-export const outlineSize = "1px"
+export const outline = {
+  outlineSize: "1px",
+}
 
-// Border Radius
-export const defaultBorderRadius = "4px"
-export const largeBorderRadius = "8px"
+export const borderRadius = {
+  defaultBorderRadius: "4px",
+  largeBorderRadius: "8px",
+}
 
-// Transition
-export const defaultTransitionSpeed = "0.1s"
+export const transitions = {
+  defaultTransitionSpeed: "0.1s",
+}
 
-// Width
-export const menuContainerWidth = 200
+export const widths = {
+  menuContainerWidth: 200,
+}

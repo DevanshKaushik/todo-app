@@ -1,13 +1,4 @@
-import {
-  lightCyanColor,
-  lightGreenColor,
-  lightGreyColor,
-  lightOrangeColor,
-  lightPinkColor,
-  lightPurpleColor,
-  lightRedColor,
-  lightYellowColor,
-} from "./styles"
+import { colors } from "./styles"
 
 export enum LabelIds {
   RED = "RED",
@@ -21,12 +12,12 @@ export enum LabelIds {
 }
 
 export const LabelColors: { [k in LabelIds as string]: string } = {
-  RED: lightRedColor,
-  ORANGE: lightOrangeColor,
-  GREEN: lightGreenColor,
-  YELLOW: lightYellowColor,
-  PINK: lightPinkColor,
-  GREY: lightGreyColor,
-  CYAN: lightCyanColor,
-  PURPLE: lightPurpleColor,
+  RED: colors.light.redColor,
+  ORANGE: colors.light.orangeColor,
+  GREEN: colors.light.greenColor,
+  YELLOW: colors.light.yellowColor,
+  PINK: colors.light.pinkColor,
+  GREY: colors.light.greyColor,
+  CYAN: colors.light.cyanColor,
+  PURPLE: colors.light.purpleColor,
 }

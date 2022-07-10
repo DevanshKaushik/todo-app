@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react"
 import { IconButton } from ".."
 import { Months } from "../../constants/dateTime"
 import { LabelColors } from "../../constants/labels"
-import { primaryColor } from "../../constants/styles"
+import { colors } from "../../constants/styles"
 import { useMenuButton } from "../../helpers/useMenuButton"
 import { IMenuItem, ITodo } from "../../interfaces"
 import useLabelsStore from "../../stores/labels"
@@ -83,7 +83,7 @@ const Todo: FunctionComponent<Props> = (props) => {
           className="Todo-Delete-Button"
           src="images/delete.svg"
           onClick={props.onDelete}
-          color={primaryColor}
+          color={colors.primaryColor}
           size="1.5rem"
         />
       </TodoTop>

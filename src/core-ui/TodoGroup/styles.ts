@@ -1,16 +1,11 @@
 import styled from "styled-components"
-import {
-  defaultBorderRadius,
-  defaultPadding,
-  hoverOverlayColor,
-  todoGroupBGColor,
-} from "../../constants/styles"
+import { borderRadius, colors, paddings } from "../../constants/styles"
 
 export const StyledTodoGroup = styled.div`
   position: relative;
-  padding: ${defaultPadding};
-  background-color: ${todoGroupBGColor};
-  border-radius: ${defaultBorderRadius};
+  padding: ${paddings.defaultPadding};
+  background-color: ${colors.todoGroupBGColor};
+  border-radius: ${borderRadius.defaultBorderRadius};
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -38,7 +33,7 @@ export const StyledTodoGroup = styled.div`
     }
 
     &:focus {
-      background-color: ${hoverOverlayColor} !important;
+      background-color: ${colors.hoverOverlayColor} !important;
     }
   }
 `

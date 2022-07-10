@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import { largePadding, sideBarColor } from "../../constants/styles"
+import { colors, paddings } from "../../constants/styles"
 
 export const StyledSideBar = styled.aside`
-  padding: ${largePadding};
-  background-color: ${sideBarColor};
+  padding: ${paddings.largePadding};
+  background-color: ${colors.sideBarColor};
   display: flex;
   flex-direction: column;
   width: 30rem;

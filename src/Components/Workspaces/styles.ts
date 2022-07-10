@@ -1,10 +1,5 @@
 import styled from "styled-components"
-import {
-  defaultBorderRadius,
-  defaultTransitionSpeed,
-  hoverOverlayColor,
-  primaryColor,
-} from "../../constants/styles"
+import { colors, transitions, borderRadius } from "../../constants/styles"
 
 const circleSize = "15px"
 
@@ -23,7 +18,7 @@ export const StyledWorkspace = styled.div`
     left: calc(${circleSize} / 2.1);
     width: 2px;
     height: calc(100% - 25px);
-    background-color: ${primaryColor};
+    background-color: ${colors.primaryColor};
     opacity: 0.4;
   }
 `
@@ -42,7 +37,7 @@ export const WorkspaceTitle = styled.div`
   /* Creates the circle before the workspaces text */
   p::before {
     content: "";
-    border: solid 2px ${primaryColor};
+    border: solid 2px ${colors.primaryColor};
     width: ${circleSize};
     height: ${circleSize};
     border-radius: 50%;
@@ -66,14 +61,14 @@ export const WorkspaceItem = styled.li<WorkspaceItemProps>`
   font-size: 1.6rem;
   background-color: ${(props) =>
     props.active ? "rgba(255, 255, 255, 0.16)" : ""};
-  border-radius: ${defaultBorderRadius};
+  border-radius: ${borderRadius.defaultBorderRadius};
   white-space: nowrap;
   overflow-x: clip;
   text-overflow: ellipsis;
   cursor: pointer;
   user-select: none;
   outline: none;
-  transition: background-color ${defaultTransitionSpeed} ease;
+  transition: background-color ${transitions.defaultTransitionSpeed} ease;
 
   display: flex;
   justify-content: space-between;
@@ -87,14 +82,14 @@ export const WorkspaceItem = styled.li<WorkspaceItemProps>`
     }
 
     &:focus {
-      background-color: ${hoverOverlayColor} !important;
+      background-color: ${colors.hoverOverlayColor} !important;
     }
   }
 
   &:hover,
   &:focus,
   &:focus-within {
-    background-color: ${hoverOverlayColor};
+    background-color: ${colors.hoverOverlayColor};
 
     .Workspace-Item-Menu-Button {
       opacity: 1;

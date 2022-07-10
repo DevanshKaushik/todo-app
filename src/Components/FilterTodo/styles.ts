@@ -1,15 +1,16 @@
 import styled from "styled-components"
 import {
-  componentOverlayColor,
-  defaultTransitionSpeed,
-  hoverOverlayColor,
-  largeBorderRadius,
-  smallPadding,
+  borderRadius,
+  colors,
+  paddings,
+  transitions,
 } from "../../constants/styles"
 
 type FilterTodoButtonProps = {
   active: boolean
 }
+
+const { largeBorderRadius } = borderRadius
 
 export const StyledFilterTodo = styled.div`
   background-color: rgba(255, 255, 255, 0.15);
@@ -20,20 +21,20 @@ export const StyledFilterTodo = styled.div`
 
 export const FilterTodoButton = styled.div<FilterTodoButtonProps>`
   position: relative;
-  padding: ${smallPadding} 0;
+  padding: ${paddings.smallPadding} 0;
   width: 33.3%;
   text-align: center;
   cursor: pointer;
   font-weight: ${(props) => (props.active ? "600" : "")};
   background-color: ${(props) =>
-    props.active ? componentOverlayColor : ""} !important;
+    props.active ? colors.componentOverlayColor : ""} !important;
 
   outline: none;
-  transition: background-color ${defaultTransitionSpeed} ease;
+  transition: background-color ${transitions.defaultTransitionSpeed} ease;
 
   &:hover,
   &:focus {
-    background-color: ${hoverOverlayColor};
+    background-color: ${colors.hoverOverlayColor};
   }
 
   /* Creates the seperator between the buttons */

@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react"
-import { menuContainerWidth } from "../../constants/styles"
+import { widths } from "../../constants/styles"
 import { IMenuItem, IMenu } from "../../interfaces"
 import useMenuStore from "../../stores/menu"
 import { MenuItem, StyledMenu } from "./style"
@@ -17,11 +17,11 @@ const Menu = forwardRef<HTMLUListElement, Props>((props, ref) => {
 
   // Updating posX if the menu is out of the page
   let posX = props.menu.posX
-  const menuRight = props.menu.posX + menuContainerWidth
+  const menuRight = props.menu.posX + widths.menuContainerWidth
   const bodyWidth = document.body.clientWidth
   if (menuRight > bodyWidth) {
     const bufferWidth = 10
-    posX = bodyWidth - menuContainerWidth - bufferWidth
+    posX = bodyWidth - widths.menuContainerWidth - bufferWidth
   }
 
   if (!props.menu.visible) return <></>

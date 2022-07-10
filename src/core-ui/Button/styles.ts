@@ -1,9 +1,5 @@
 import styled from "styled-components"
-import {
-  defaultBorderRadius,
-  defaultTransitionSpeed,
-  hoverOverlayColor,
-} from "../../constants/styles"
+import { borderRadius, transitions, colors } from "../../constants/styles"
 
 type StyledIconButtonProps = {
   iconUrl: string
@@ -14,11 +10,11 @@ type StyledIconButtonProps = {
 
 export const StyledIconButton = styled.button<StyledIconButtonProps>`
   border: none;
-  border-radius: ${defaultBorderRadius};
+  border-radius: ${borderRadius.defaultBorderRadius};
   background-color: transparent;
   cursor: pointer;
   outline: none;
-  transition: background-color ${defaultTransitionSpeed} ease;
+  transition: background-color ${transitions.defaultTransitionSpeed} ease;
   display: grid;
   justify-content: center;
   align-items: center;
@@ -27,7 +23,7 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
 
   &:hover,
   &:focus {
-    background-color: ${hoverOverlayColor};
+    background-color: ${colors.hoverOverlayColor};
   }
 
   &:focus {

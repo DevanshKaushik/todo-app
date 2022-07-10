@@ -1,14 +1,5 @@
 import styled from "styled-components"
-import {
-  completeTodoBGColor,
-  completeTodoGroupedBGColor,
-  defaultBorderRadius,
-  defaultPadding,
-  hoverOverlayColor,
-  largeBorderRadius,
-  primaryColor,
-  todoBGColor,
-} from "../../constants/styles"
+import { borderRadius, colors, paddings } from "../../constants/styles"
 
 type StyledTodoProps = {
   isComplete: boolean
@@ -18,17 +9,17 @@ type StyledTodoProps = {
 
 export const StyledTodo = styled.div<StyledTodoProps>`
   position: relative;
-  padding: ${defaultPadding};
-  border-radius: ${largeBorderRadius};
+  padding: ${paddings.defaultPadding};
+  border-radius: ${borderRadius.largeBorderRadius};
   height: fit-content;
 
   /* Changing the bg-color based on complete and grouped props */
   background-color: ${(props) =>
     props.isComplete
       ? props.isGrouped
-        ? completeTodoGroupedBGColor
-        : completeTodoBGColor
-      : todoBGColor};
+        ? colors.completeTodoGroupedBGColor
+        : colors.completeTodoBGColor
+      : colors.todoBGColor};
 
   &:hover,
   &:focus,
@@ -50,7 +41,7 @@ export const StyledTodo = styled.div<StyledTodoProps>`
     }
 
     &:focus {
-      background-color: ${hoverOverlayColor} !important;
+      background-color: ${colors.hoverOverlayColor} !important;
     }
   }
 
@@ -63,7 +54,7 @@ export const StyledTodo = styled.div<StyledTodoProps>`
   .Todo-Label {
     position: absolute;
     top: 0;
-    left: ${defaultPadding};
+    left: ${paddings.defaultPadding};
     pointer-events: none;
   }
 
@@ -103,19 +94,19 @@ export const TodoComplete = styled.input`
   width: 2rem;
   height: 2rem;
   margin-right: 1rem;
-  border: 2px solid ${primaryColor};
-  border-radius: ${defaultBorderRadius};
+  border: 2px solid ${colors.primaryColor};
+  border-radius: ${borderRadius.defaultBorderRadius};
   cursor: pointer;
 
   &:checked {
-    background-color: ${primaryColor};
+    background-color: ${colors.primaryColor};
   }
 `
 
 export const TodoDeadline = styled.div`
   font-size: 1.4rem;
   font-weight: 600;
-  color: ${primaryColor};
+  color: ${colors.primaryColor};
   cursor: pointer;
 
   &:focus {

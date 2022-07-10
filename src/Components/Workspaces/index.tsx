@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid"
 
 import { IconButton } from "../../core-ui"
 import { workspacesStorageKey } from "../../constants/localStorageKeys"
-import { primaryColor } from "../../constants/styles"
+import { colors } from "../../constants/styles"
 import {
   StyledWorkspace,
   WorkspaceTitle,
@@ -130,7 +130,7 @@ const Workspaces: FunctionComponent = () => {
         <IconButton
           src="images/plus.svg"
           onClick={addButtonClickHandler}
-          color={primaryColor}
+          color={colors.primaryColor}
         />
       </WorkspaceTitle>
       <WorkspaceList>
