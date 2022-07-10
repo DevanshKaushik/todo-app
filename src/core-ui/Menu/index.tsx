@@ -24,10 +24,13 @@ const Menu = forwardRef<HTMLUListElement, Props>((props, ref) => {
     posX = bodyWidth - widths.menuContainerWidth - bufferWidth
   }
 
-  if (!props.menu.visible) return <></>
-
   return (
-    <StyledMenu ref={ref} left={posX} top={props.menu.posY}>
+    <StyledMenu
+      ref={ref}
+      left={posX}
+      top={props.menu.posY}
+      visible={props.menu.visible}
+    >
       {props.menu.items.map((menuItem, index) => {
         return (
           <MenuItem

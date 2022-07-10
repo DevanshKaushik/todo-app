@@ -4,6 +4,7 @@ import { borderRadius, colors, paddings, widths } from "../../constants/styles"
 type StyledMenuProps = {
   top: number
   left: number
+  visible: boolean
 }
 
 export const StyledMenu = styled.ul<StyledMenuProps>`
@@ -19,6 +20,7 @@ export const StyledMenu = styled.ul<StyledMenuProps>`
   flex-direction: column;
   border-radius: ${borderRadius.defaultBorderRadius};
   padding: ${paddings.smallPadding} 0;
+  visibility: ${(props) => (props.visible ? "unset" : "hidden")};
 `
 
 export const MenuItem = styled.li`
