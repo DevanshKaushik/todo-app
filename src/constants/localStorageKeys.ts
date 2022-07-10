@@ -1,1 +1,2 @@
-export const workspacesStorageKey = "WORKSPACES"
+export const workspacesStorageKey = "WORKSPACES-STORAGE"
+export const labelsStorageKey = "LABELS-STORAGE"

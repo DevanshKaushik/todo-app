@@ -1,4 +1,3 @@
-export type { ITodo, HexColorString } from "./todo"
+export type { ITodo, HexColorString, ILabel } from "./todo"
 export type { ITodoGroup } from "./todoGroup"
-export type { IMenuItem, IMenuItemAction } from "./menuItem"
-export type { IMenu } from "./menu"
+export type { IMenu, IMenuItem } from "./menu"

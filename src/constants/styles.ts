@@ -16,6 +16,9 @@ export const lightGreenColor = "#67ff9b"
 export const lightYellowColor = "#fcff67"
 export const lightPinkColor = "#e088ff"
 export const lightOrangeColor = "#ff8c67"
+export const lightGreyColor = "#bfbfbf"
+export const lightCyanColor = "#67fff6"
+export const lightPurpleColor = "#857bfa"
 
 // Padding
 export const smallPadding = "1.5rem"

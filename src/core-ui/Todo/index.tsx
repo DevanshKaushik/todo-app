@@ -1,16 +1,11 @@
 import React, { FunctionComponent } from "react"
 import { IconButton } from ".."
 import { Months } from "../../constants/dateTime"
-import {
-  lightGreenColor,
-  lightOrangeColor,
-  lightPinkColor,
-  lightRedColor,
-  lightYellowColor,
-  primaryColor,
-} from "../../constants/styles"
+import { LabelColors } from "../../constants/labels"
+import { primaryColor } from "../../constants/styles"
 import { useMenuButton } from "../../helpers/useMenuButton"
 import { IMenuItem, ITodo } from "../../interfaces"
+import useLabelsStore from "../../stores/labels"
 import {
   StyledTodo,
   TodoComplete,
@@ -19,14 +14,6 @@ import {
   TodoTop,
   TodoText,
 } from "./styles"
-
-export const TodoLabelColor = {
-  RED: lightRedColor,
-  ORANGE: lightOrangeColor,
-  GREEN: lightGreenColor,
-  YELLOW: lightYellowColor,
-  PINK: lightPinkColor,
-}
 
 type Props = {
   todo: ITodo
@@ -57,6 +44,10 @@ const Todo: FunctionComponent<Props> = (props) => {
 
   const { menuButtonClickHandler } = useMenuButton(menuItems)
 
+  // Grabbing the label from the labels store
+  const getLabel = useLabelsStore((state) => state.getLabel)
+  const label = props.todo.labelId ? getLabel(props.todo.labelId) : null
+
   return (
     <StyledTodo
       isComplete={props.todo.isComplete}
@@ -73,14 +64,14 @@ const Todo: FunctionComponent<Props> = (props) => {
         />
       )}
 
-      {/* Adding label icon if the label color is defined */}
-      {props.todo.labelColor && (
+      {/* Adding label icon if the label is not null */}
+      {label && (
         <IconButton
           className="Todo-Label"
           src="images/label.svg"
           size="1.6rem"
           noPadding
-          color={props.todo.labelColor}
+          color={LabelColors[label.id]}
           onClick={() => {}}
           notTabable
         />

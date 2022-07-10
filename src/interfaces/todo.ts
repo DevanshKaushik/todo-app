@@ -1,5 +1,10 @@
 export type HexColorString = string
 
+export interface ILabel {
+  id: string
+  name: string
+}
+
 export interface ITodo {
   id: string
   text: string
@@ -7,5 +12,5 @@ export interface ITodo {
   isPinned: boolean
   isGrouped: boolean
   deadlineDate: Date | null
-  labelColor: HexColorString | null
+  labelId: string | null
 }

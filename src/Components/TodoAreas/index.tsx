@@ -3,8 +3,9 @@ import { TodoAreasColumn, TodoAreasTitle, StyledTodoAreas } from "./styles"
 
 import { v4 as uuid } from "uuid"
 import { TodoGroup } from "../../core-ui"
-import Todo, { TodoLabelColor } from "../../core-ui/Todo"
+import Todo from "../../core-ui/Todo"
 import { useResizeObserver } from "../../hooks/useResizeObserver"
+import { LabelIds } from "../../constants/labels"
 
 export enum TodoAreasCategory {
   PINNED = "PINNED",
@@ -43,7 +44,7 @@ const createColumnsWithTodos = (
             id: uuid(),
             text: "Test todo text",
             deadlineDate: new Date(),
-            labelColor: TodoLabelColor.GREEN,
+            labelId: LabelIds.GREEN,
             isComplete: false,
             isPinned: true,
             isGrouped: false,
