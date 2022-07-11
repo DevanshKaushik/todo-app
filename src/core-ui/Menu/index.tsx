@@ -2,7 +2,7 @@ import React, { forwardRef } from "react"
 import { widths } from "../../constants/styles"
 import { IMenuItem, IMenu } from "../../interfaces"
 import useMenuStore from "../../stores/menu"
-import { MenuItem, StyledMenu } from "./style"
+import { MenuItem, StyledMenu } from "./styles"
 
 type Props = {
   menu: IMenu
@@ -17,11 +17,11 @@ const Menu = forwardRef<HTMLUListElement, Props>((props, ref) => {
 
   // Updating posX if the menu is out of the page
   let posX = props.menu.posX
-  const menuRight = props.menu.posX + widths.menuContainerWidth
+  const menuRight = props.menu.posX + widths.menuWidth
   const bodyWidth = document.body.clientWidth
   if (menuRight > bodyWidth) {
     const bufferWidth = 10
-    posX = bodyWidth - widths.menuContainerWidth - bufferWidth
+    posX = bodyWidth - widths.menuWidth - bufferWidth
   }
 
   return (

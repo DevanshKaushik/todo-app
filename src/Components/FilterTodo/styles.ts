@@ -27,14 +27,14 @@ export const FilterTodoButton = styled.div<FilterTodoButtonProps>`
   cursor: pointer;
   font-weight: ${(props) => (props.active ? "600" : "")};
   background-color: ${(props) =>
-    props.active ? colors.componentOverlayColor : ""} !important;
+    props.active ? colors.activeColor : ""} !important;
 
   outline: none;
   transition: background-color ${transitions.defaultTransitionSpeed} ease;
 
   &:hover,
   &:focus {
-    background-color: ${colors.hoverOverlayColor};
+    background-color: ${colors.hoverColor};
   }
 
   /* Creates the seperator between the buttons */

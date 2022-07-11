@@ -11,9 +11,9 @@ export const StyledMenu = styled.ul<StyledMenuProps>`
   position: absolute;
   top: ${(props) => props.top}px;
   left: ${(props) => props.left}px;
-  width: ${widths.menuContainerWidth}px;
+  width: ${widths.menuWidth}px;
   z-index: 10;
-  background-color: ${colors.menuContainerColor};
+  background-color: ${colors.menuColor};
   box-shadow: -5px 5px 10px 2px rgba(0, 0, 0, 0.25);
   list-style: none;
   display: flex;
@@ -24,6 +24,7 @@ export const StyledMenu = styled.ul<StyledMenuProps>`
 `
 
 export const MenuItem = styled.li`
+  position: relative;
   font-size: 1.4rem;
   padding: 0.5rem ${paddings.defaultPadding};
   cursor: pointer;

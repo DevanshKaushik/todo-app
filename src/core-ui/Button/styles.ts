@@ -23,7 +23,7 @@ export const StyledIconButton = styled.button<StyledIconButtonProps>`
 
   &:hover,
   &:focus {
-    background-color: ${colors.hoverOverlayColor};
+    background-color: ${colors.hoverColor};
   }
 
   &:focus {

@@ -1,15 +1,16 @@
 export const colors = {
   primaryColor: "#2b9cff",
   sideBarColor: "#121418",
-  menuContainerColor: "#202124",
+  menuColor: "#202124",
 
-  hoverOverlayColor: "rgba(255, 255, 255, 0.1)",
-  componentOverlayColor: "rgba(255, 255, 255, 0.16)",
+  hoverColor: "rgba(255, 255, 255, 0.1)",
 
-  todoBGColor: "#595c60",
-  completeTodoBGColor: "#2d3136",
-  completeTodoGroupedBGColor: "#222427",
-  todoGroupBGColor: "#303338",
+  activeColor: "#52565a",
+
+  todoColor: "#595c60",
+  todoGroupColor: "#303338",
+  todoCompleteColor: "#2d3136",
+  todoCompleteGroupedColor: "#222427",
 
   light: {
     redColor: "#ff6767",
@@ -47,5 +48,6 @@ export const transitions = {
 }
 
 export const widths = {
-  menuContainerWidth: 200,
+  menuWidth: 200,
+  labelPickerWidth: 250,
 }

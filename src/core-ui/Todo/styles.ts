@@ -17,9 +17,9 @@ export const StyledTodo = styled.div<StyledTodoProps>`
   background-color: ${(props) =>
     props.isComplete
       ? props.isGrouped
-        ? colors.completeTodoGroupedBGColor
-        : colors.completeTodoBGColor
-      : colors.todoBGColor};
+        ? colors.todoCompleteGroupedColor
+        : colors.todoCompleteColor
+      : colors.todoColor};
 
   &:hover,
   &:focus,
@@ -41,7 +41,7 @@ export const StyledTodo = styled.div<StyledTodoProps>`
     }
 
     &:focus {
-      background-color: ${colors.hoverOverlayColor} !important;
+      background-color: ${colors.hoverColor} !important;
     }
   }
 

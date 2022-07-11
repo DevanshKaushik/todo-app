@@ -82,14 +82,14 @@ export const WorkspaceItem = styled.li<WorkspaceItemProps>`
     }
 
     &:focus {
-      background-color: ${colors.hoverOverlayColor} !important;
+      background-color: ${colors.hoverColor} !important;
     }
   }
 
   &:hover,
   &:focus,
   &:focus-within {
-    background-color: ${colors.hoverOverlayColor};
+    background-color: ${colors.hoverColor};
 
     .Workspace-Item-Menu-Button {
       opacity: 1;

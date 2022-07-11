@@ -4,7 +4,7 @@ import { borderRadius, colors, paddings } from "../../constants/styles"
 export const StyledTodoGroup = styled.div`
   position: relative;
   padding: ${paddings.defaultPadding};
-  background-color: ${colors.todoGroupBGColor};
+  background-color: ${colors.todoGroupColor};
   border-radius: ${borderRadius.defaultBorderRadius};
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@ export const StyledTodoGroup = styled.div`
     }
 
     &:focus {
-      background-color: ${colors.hoverOverlayColor} !important;
+      background-color: ${colors.hoverColor} !important;
     }
   }
 `
