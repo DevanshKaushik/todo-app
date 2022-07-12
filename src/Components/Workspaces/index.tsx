@@ -11,7 +11,7 @@ import {
   WorkspaceItem,
 } from "./styles"
 import { IMenuItem } from "../../interfaces"
-import { useMenuButton } from "../../helpers/useMenuButton"
+import { useMenuButton } from "../../hooks/useMenuButton"
 
 interface Workspace {
   id: string

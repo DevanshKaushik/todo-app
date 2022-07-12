@@ -1,7 +1,8 @@
 export type IMenuItem = {
-  item: React.ReactNode
-  keepOpen?: boolean
+  item: string
   action: () => void
+  keepOpen?: boolean
+  dropdown?: JSX.Element
 }
 
 export interface IMenu {

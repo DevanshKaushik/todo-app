@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React from "react"
 import { AddTodo, FilterTodo, SideBar, TodoAreas } from "./components"
 import { TodoAreasCategory } from "./components/TodoAreas"
 import { Menu } from "./core-ui"
@@ -27,33 +27,14 @@ function App() {
   // Setting up the menu properties
   const menuItems = useMenuStore((state) => state.items)
   const menuVisible = useMenuStore((state) => state.visible)
-  const setMenuVisible = useMenuStore((state) => state.setVisible)
   const menuPosX = useMenuStore((state) => state.posX)
   const menuPosY = useMenuStore((state) => state.posY)
-
-  // Handling menu close on click outside of it
-  const menuRef = useRef<HTMLUListElement>(null)
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const { current } = menuRef
-      if (!current) return
-      if (!current.contains(e.target as Node)) {
-        setMenuVisible(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClick)
-    return () => {
-      document.removeEventListener("mousedown", handleClick)
-    }
-  }, [setMenuVisible])
 
   return (
     <div className="App">
       <SideBar />
       <Main />
       <Menu
-        ref={menuRef}
         menu={{
           items: menuItems,
           posX: menuPosX,

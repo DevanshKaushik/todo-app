@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react"
 import { IconButton } from ".."
-import { useMenuButton } from "../../helpers/useMenuButton"
+import { useMenuButton } from "../../hooks/useMenuButton"
 import { IMenuItem, ITodo, ITodoGroup } from "../../interfaces"
 import { StyledTodoGroup, TodoGroupTitle } from "./styles"
 

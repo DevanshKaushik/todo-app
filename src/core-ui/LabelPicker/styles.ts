@@ -46,6 +46,7 @@ export const LabelItem = styled.li<LabelItemProps>`
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1.5rem;
+  cursor: pointer;
   border-radius: ${borderRadius.defaultBorderRadius};
   background-color: ${(props) =>
     props.active ? colors.activeColor + "!important" : "tranparent"};
