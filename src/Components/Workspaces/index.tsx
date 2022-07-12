@@ -115,10 +115,10 @@ const Workspaces: FunctionComponent = () => {
 
   // Setting up the menu items
   const menuItems: IMenuItem[] = [
-    { item: "Delete", action: () => {} },
-    { item: "Rename", action: () => {} },
-    { item: "Make a copy", action: () => {} },
-    { item: "Set active", action: () => {} },
+    { name: "Delete", action: () => {} },
+    { name: "Rename", action: () => {} },
+    { name: "Make a copy", action: () => {} },
+    { name: "Set active", action: () => {} },
   ]
 
   const { menuButtonClickHandler } = useMenuButton(menuItems)

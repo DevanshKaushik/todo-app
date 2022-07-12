@@ -75,7 +75,7 @@ const Menu: FunctionComponent<Props> = (props) => {
             active={isDropdownActive(menuItem)}
             onClick={() => menuItemClickHandler(menuItem)}
           >
-            {menuItem.item}
+            {menuItem.name}
             {menuItem.dropdown && (
               <>
                 <span>&gt;</span>

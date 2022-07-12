@@ -1,5 +1,5 @@
 export type IMenuItem = {
-  item: string
+  name: string
   action: () => void
   keepOpen?: boolean
   dropdown?: JSX.Element

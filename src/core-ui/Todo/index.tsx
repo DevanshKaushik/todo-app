@@ -35,11 +35,11 @@ const Todo: FunctionComponent<Props> = (props) => {
   const menuItems: IMenuItem[] = [
     props.todo.isPinned
       ? props.todo.isGrouped
-        ? { item: "Unpin group", action: props.onUnpin }
-        : { item: "Unpin", action: props.onUnpin }
-      : { item: "Pin", action: props.onPin },
-    { item: "Delete", action: props.onDelete },
-    { item: "Make a copy", action: props.onCopy },
+        ? { name: "Unpin group", action: props.onUnpin }
+        : { name: "Unpin", action: props.onUnpin }
+      : { name: "Pin", action: props.onPin },
+    { name: "Delete", action: props.onDelete },
+    { name: "Make a copy", action: props.onCopy },
   ]
 
   const { menuButtonClickHandler } = useMenuButton(menuItems)
