@@ -6,6 +6,7 @@ import { colors } from "../../constants/styles"
 import { useMenuButton } from "../../hooks/useMenuButton"
 import { IMenuItem, ITodo } from "../../interfaces"
 import useLabelsStore from "../../stores/labels"
+import LabelPicker from "../LabelPicker"
 import {
   StyledTodo,
   TodoComplete,
@@ -22,6 +23,7 @@ type Props = {
   onPin: () => void
   onUnpin: () => void
   onCopy: () => void
+  onLabelChange: (id: string) => void
 }
 
 const Todo: FunctionComponent<Props> = (props) => {
@@ -32,12 +34,25 @@ const Todo: FunctionComponent<Props> = (props) => {
     } ${props.todo.deadlineDate.getDate()}`
 
   // Setting up the menu items
+  const labelMenuItemDropdown = (
+    <LabelPicker
+      activeLabelId={props.todo.labelId}
+      onSelect={props.onLabelChange}
+    />
+  )
+
   const menuItems: IMenuItem[] = [
     props.todo.isPinned
       ? props.todo.isGrouped
         ? { name: "Unpin group", action: props.onUnpin }
         : { name: "Unpin", action: props.onUnpin }
       : { name: "Pin", action: props.onPin },
+    {
+      name: props.todo.labelId ? "Change label" : "Add label",
+      action: () => {},
+      keepOpen: true,
+      dropdown: labelMenuItemDropdown,
+    },
     { name: "Delete", action: props.onDelete },
     { name: "Make a copy", action: props.onCopy },
   ]

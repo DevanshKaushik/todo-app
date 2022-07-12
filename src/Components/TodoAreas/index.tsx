@@ -54,6 +54,7 @@ const createColumnsWithTodos = (
           onPin={() => {}}
           onUnpin={() => {}}
           onCopy={() => {}}
+          onLabelChange={() => {}}
         />
       </TodoGroup>
     </TodoAreasColumn>
