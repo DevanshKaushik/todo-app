@@ -7,6 +7,7 @@ type TodoAreasColumnProps = {
 }
 
 export const StyledTodoAreas = styled.div`
+  position: relative;
   margin-bottom: 9rem;
   width: 100%;
 `
@@ -25,4 +26,8 @@ export const TodoAreasColumn = styled.div<TodoAreasColumnProps>`
   gap: ${(props) => props.rowGap}px;
   width: ${(props) => props.columnWidth}px;
   margin: 0 calc(${(props) => props.columnGap}px / 2);
+`
+
+export const TodosContainer = styled.div`
+  position: relative;
 `

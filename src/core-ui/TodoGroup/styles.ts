@@ -1,8 +1,15 @@
 import styled from "styled-components"
 import { borderRadius, colors, paddings } from "../../constants/styles"
 
-export const StyledTodoGroup = styled.div`
-  position: relative;
+type StyledTodoGroupProps = {
+  width: number
+}
+
+export const StyledTodoGroup = styled.div<StyledTodoGroupProps>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: ${(props) => props.width}px;
   padding: ${paddings.defaultPadding};
   background-color: ${colors.todoGroupColor};
   border-radius: ${borderRadius.defaultBorderRadius};

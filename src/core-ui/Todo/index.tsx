@@ -18,6 +18,7 @@ import {
 
 type Props = {
   todo: ITodo
+  width: number
   onComplete: () => void
   onDelete: () => void
   onPin: () => void
@@ -65,6 +66,7 @@ const Todo: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledTodo
+      width={props.width}
       isComplete={props.todo.isComplete}
       isGrouped={props.todo.isGrouped}
     >

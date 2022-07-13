@@ -6,6 +6,7 @@ import { StyledTodoGroup, TodoGroupTitle } from "./styles"
 
 type Props = {
   todoGroup: ITodoGroup
+  width: number
   children?: React.ReactNode
   onPin: () => void
   onUnpin: () => void
@@ -40,7 +41,7 @@ const TodoGroup: FunctionComponent<Props> = (props) => {
   const { menuButtonClickHandler } = useMenuButton(menuItems)
 
   return (
-    <StyledTodoGroup>
+    <StyledTodoGroup width={props.width}>
       {/* Adding pin icon if the todo group is pinned */}
       {props.todoGroup.isPinned && (
         <IconButton

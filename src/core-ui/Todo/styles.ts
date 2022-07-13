@@ -2,13 +2,17 @@ import styled from "styled-components"
 import { borderRadius, colors, paddings } from "../../constants/styles"
 
 type StyledTodoProps = {
+  width: number
   isComplete: boolean
   isGrouped: boolean
   labelColor?: string
 }
 
 export const StyledTodo = styled.div<StyledTodoProps>`
-  position: relative;
+  position: ${(props) => (props.isGrouped ? "" : "absolute")};
+  width: ${(props) => (props.isGrouped ? "" : props.width + "px")};
+  top: 0;
+  left: 0;
   padding: ${paddings.defaultPadding};
   border-radius: ${borderRadius.largeBorderRadius};
   height: fit-content;
