@@ -1,12 +1,11 @@
-import React, { createRef, FunctionComponent, useEffect, useState } from "react"
-import { TodoAreasTitle, StyledTodoAreas, TodosContainer } from "./styles"
-
+import React, { FunctionComponent, useEffect, useState } from "react"
+import { TodoAreasTitle, StyledTodoAreas } from "./styles"
+import { TodosContainer } from ".."
 import { v4 as uuid } from "uuid"
 import { TodoGroup } from "../../core-ui"
 import Todo from "../../core-ui/Todo"
 import { useResizeObserver } from "../../hooks/useResizeObserver"
 import { LabelIds } from "../../constants/labels"
-import setTodosPosition from "../../helpers/setTodosPosition"
 
 export enum TodoAreasCategory {
   PINNED = "PINNED",
@@ -23,26 +22,13 @@ type Props = {
 const TodoAreas: FunctionComponent<Props> = (props) => {
   // Setting up column count based on the available space
   const [columnCount, setColumnCount] = useState<number>(1)
-  const { width: containerWidth, ref } = useResizeObserver<HTMLDivElement>()
+  const { width: containerWidth, ref: todoAreasRef } =
+    useResizeObserver<HTMLDivElement>()
 
   useEffect(() => {
     const newColumnCount = Math.floor(containerWidth / props.columnWidth)
     setColumnCount(newColumnCount)
   }, [containerWidth, props.columnWidth])
-
-  // Positioning all the todos inside the todos container
-  const todosContainerRef = createRef<HTMLDivElement>()
-  useEffect(() => {
-    if (!todosContainerRef.current) return
-    const { current: todosContainer } = todosContainerRef
-
-    setTodosPosition(
-      todosContainer,
-      columnCount,
-      props.rowGap,
-      props.columnWidth
-    )
-  }, [columnCount, props.columnWidth, props.rowGap])
 
   const todo = (
     <Todo
@@ -65,7 +51,7 @@ const TodoAreas: FunctionComponent<Props> = (props) => {
     />
   )
 
-  const todoGroup1 = (
+  const todoGroup = (
     <TodoGroup
       todoGroup={{ id: uuid(), name: "Test Group", isPinned: true }}
       width={props.columnWidth - props.columnGap}
@@ -75,55 +61,6 @@ const TodoAreas: FunctionComponent<Props> = (props) => {
       onUngroup={() => {}}
       onCopy={() => {}}
     >
-      <Todo
-        todo={{
-          id: uuid(),
-          text: "Test todo text",
-          deadlineDate: new Date(),
-          labelId: LabelIds.GREEN,
-          isComplete: false,
-          isPinned: true,
-          isGrouped: false,
-        }}
-        width={props.columnWidth - props.columnGap}
-        onComplete={() => {}}
-        onDelete={() => {}}
-        onPin={() => {}}
-        onUnpin={() => {}}
-        onCopy={() => {}}
-        onLabelChange={() => {}}
-      />
-    </TodoGroup>
-  )
-
-  const todoGroup2 = (
-    <TodoGroup
-      todoGroup={{ id: uuid(), name: "Test Group", isPinned: true }}
-      width={props.columnWidth - props.columnGap}
-      onPin={() => {}}
-      onUnpin={() => {}}
-      onDelete={() => {}}
-      onUngroup={() => {}}
-      onCopy={() => {}}
-    >
-      <Todo
-        todo={{
-          id: uuid(),
-          text: "Test todo text",
-          deadlineDate: new Date(),
-          labelId: LabelIds.GREEN,
-          isComplete: false,
-          isPinned: true,
-          isGrouped: false,
-        }}
-        width={props.columnWidth - props.columnGap}
-        onComplete={() => {}}
-        onDelete={() => {}}
-        onPin={() => {}}
-        onUnpin={() => {}}
-        onCopy={() => {}}
-        onLabelChange={() => {}}
-      />
       <Todo
         todo={{
           id: uuid(),
@@ -146,25 +83,29 @@ const TodoAreas: FunctionComponent<Props> = (props) => {
   )
 
   return (
-    <StyledTodoAreas ref={ref}>
+    <StyledTodoAreas ref={todoAreasRef}>
       {React.useMemo(() => {
         return (
           <>
             <TodoAreasTitle>{props.category}</TodoAreasTitle>
-            <TodosContainer ref={todosContainerRef}>
+            <TodosContainer
+              columnCount={columnCount}
+              columnWidth={props.columnWidth}
+              rowGap={props.rowGap}
+            >
               {/* For testing the layout */}
-              {todoGroup1}
+              {todoGroup}
               {todo}
               {todo}
               {todo}
-              {todoGroup2}
+              {todoGroup}
               {todo}
               {todo}
-              {todoGroup2}
+              {todoGroup}
             </TodosContainer>
           </>
         )
-      }, [props.columnGap, props.columnWidth, columnCount])}
+      }, [props.category, props.columnWidth, props.rowGap, columnCount])}
     </StyledTodoAreas>
   )
 }
