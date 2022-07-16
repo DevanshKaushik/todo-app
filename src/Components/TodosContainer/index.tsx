@@ -1,5 +1,5 @@
-import React, { createRef, FunctionComponent, useEffect } from "react"
-import setTodosPosition from "../../helpers/setTodosPosition"
+import React, { createRef, FunctionComponent } from "react"
+import useTodosLayout from "../../hooks/useTodosLayout"
 
 type Props = {
   columnCount: number
@@ -9,20 +9,14 @@ type Props = {
 }
 
 const TodosContainer: FunctionComponent<Props> = (props) => {
-  console.count("TodoContainer Render")
-
   const todosContainerRef = createRef<HTMLDivElement>()
-  useEffect(() => {
-    if (!todosContainerRef.current) return
-    const { current: todosContainer } = todosContainerRef
 
-    setTodosPosition(
-      todosContainer,
-      props.columnCount,
-      props.rowGap,
-      props.columnWidth
-    )
-  }, [props.columnCount, props.columnWidth, props.rowGap, todosContainerRef])
+  useTodosLayout(
+    todosContainerRef,
+    props.columnCount,
+    props.rowGap,
+    props.columnWidth
+  )
 
   return (
     <div style={{ position: "relative" }} ref={todosContainerRef}>
