@@ -10,7 +10,9 @@ export interface ITodo {
   text: string
   isComplete: boolean
   isPinned: boolean
-  isGrouped: boolean
   deadlineDate: Date | null
+
+  workspaceId: string
+  groupId: string | null
   labelId: string | null
 }

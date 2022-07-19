@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
 import { IconButton } from ".."
 import { useMenuButton } from "../../hooks/useMenuButton"
-import { IMenuItem, ITodo, ITodoGroup } from "../../interfaces"
+import { IMenuItem, ITodoGroup } from "../../interfaces"
 import { StyledTodoGroup, TodoGroupTitle } from "./styles"
 
 type Props = {
@@ -16,18 +16,6 @@ type Props = {
 }
 
 const TodoGroup: FunctionComponent<Props> = (props) => {
-  // Adds new props to the children
-  const childrenWithProps = React.Children.map(props.children, (child) => {
-    if (!React.isValidElement(child)) return child
-
-    const newTodo: ITodo = {
-      ...child.props.todo,
-      isGrouped: true,
-      isPinned: props.todoGroup.isPinned,
-    }
-    return React.cloneElement(child, { todo: newTodo })
-  })
-
   // Setting up the menu items
   const menuItems: IMenuItem[] = [
     props.todoGroup.isPinned
@@ -61,9 +49,7 @@ const TodoGroup: FunctionComponent<Props> = (props) => {
           onClick={menuButtonClickHandler}
         />
       </TodoGroupTitle>
-
-      {/* Adding all the chilren nodes with modified props */}
-      {childrenWithProps}
+      {props.children}
     </StyledTodoGroup>
   )
 }

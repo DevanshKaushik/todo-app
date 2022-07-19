@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useEffect, useState } from "react"
 import { TodoAreasTitle, StyledTodoAreas } from "./styles"
 import { TodosContainer } from ".."
-import { v4 as uuid } from "uuid"
 import { TodoGroup } from "../../core-ui"
 import Todo from "../../core-ui/Todo"
 import { useResizeObserver } from "../../hooks/useResizeObserver"
 import { LabelIds } from "../../constants/labels"
+import { v4 as uuid } from "uuid"
 
 export enum TodoAreasCategory {
   PINNED = "PINNED",
@@ -33,13 +33,15 @@ const TodoAreas: FunctionComponent<Props> = (props) => {
   const todo = (
     <Todo
       todo={{
-        id: uuid(),
+        id: "",
         text: "Test todo text",
-        deadlineDate: new Date(),
-        labelId: LabelIds.GREEN,
-        isComplete: false,
         isPinned: true,
-        isGrouped: false,
+        isComplete: false,
+        deadlineDate: new Date(),
+
+        workspaceId: "",
+        groupId: null,
+        labelId: LabelIds.GREEN,
       }}
       width={props.columnWidth - props.columnGap}
       onComplete={() => {}}
@@ -53,7 +55,11 @@ const TodoAreas: FunctionComponent<Props> = (props) => {
 
   const todoGroup = (
     <TodoGroup
-      todoGroup={{ id: uuid(), name: "Test Group", isPinned: true }}
+      todoGroup={{
+        id: "",
+        name: "Test Group",
+        isPinned: true,
+      }}
       width={props.columnWidth - props.columnGap}
       onPin={() => {}}
       onUnpin={() => {}}
@@ -63,13 +69,15 @@ const TodoAreas: FunctionComponent<Props> = (props) => {
     >
       <Todo
         todo={{
-          id: uuid(),
+          id: "",
           text: "Test todo text",
-          deadlineDate: new Date(),
-          labelId: LabelIds.GREEN,
           isComplete: false,
           isPinned: true,
-          isGrouped: false,
+          deadlineDate: new Date(),
+
+          workspaceId: "",
+          labelId: LabelIds.GREEN,
+          groupId: "",
         }}
         width={props.columnWidth - props.columnGap}
         onComplete={() => {}}

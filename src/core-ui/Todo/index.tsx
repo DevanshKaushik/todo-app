@@ -42,9 +42,11 @@ const Todo: FunctionComponent<Props> = (props) => {
     />
   )
 
+  const isTodoGrouped = props.todo.groupId != null
+
   const menuItems: IMenuItem[] = [
     props.todo.isPinned
-      ? props.todo.isGrouped
+      ? isTodoGrouped
         ? { name: "Unpin group", action: props.onUnpin }
         : { name: "Unpin", action: props.onUnpin }
       : { name: "Pin", action: props.onPin },
@@ -68,10 +70,10 @@ const Todo: FunctionComponent<Props> = (props) => {
     <StyledTodo
       width={props.width}
       isComplete={props.todo.isComplete}
-      isGrouped={props.todo.isGrouped}
+      isGrouped={isTodoGrouped}
     >
       {/* Adding pin icon if the todo is pinned and not in a group */}
-      {props.todo.isPinned && !props.todo.isGrouped && (
+      {props.todo.isPinned && !isTodoGrouped && (
         <IconButton
           className="Todo-Pin-Button"
           src="images/pin.svg"
