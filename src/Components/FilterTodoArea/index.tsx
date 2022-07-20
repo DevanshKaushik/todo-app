@@ -1,9 +1,9 @@
 import React from "react"
-import { FilterTodoButton, StyledFilterTodo } from "./styles"
+import { FilterTodoButton, StyledFilterTodoArea } from "./styles"
 
-const FilterTodo = () => {
+const FilterTodoArea = () => {
   return (
-    <StyledFilterTodo>
+    <StyledFilterTodoArea>
       <FilterTodoButton tabIndex={0} active={false}>
         All
       </FilterTodoButton>
@@ -13,8 +13,8 @@ const FilterTodo = () => {
       <FilterTodoButton tabIndex={0} active={false}>
         Complete
       </FilterTodoButton>
-    </StyledFilterTodo>
+    </StyledFilterTodoArea>
   )
 }
 
-export default FilterTodo
+export default FilterTodoArea

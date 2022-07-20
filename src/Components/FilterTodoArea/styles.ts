@@ -12,7 +12,7 @@ type FilterTodoButtonProps = {
 
 const { largeBorderRadius } = borderRadius
 
-export const StyledFilterTodo = styled.div`
+export const StyledFilterTodoArea = styled.div`
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 0 0 ${largeBorderRadius} ${largeBorderRadius};
   font-size: 1.6rem;

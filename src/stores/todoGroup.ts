@@ -6,7 +6,6 @@ import { ITodoGroup } from "../interfaces"
 type TodoGroupState = {
   todoGroups: ITodoGroup[]
   getTodoGroup: (id: string) => ITodoGroup | undefined
-  getAllTodoGroups: () => ITodoGroup[]
   addTodoGroup: (todoGroup: ITodoGroup) => void
   deleteTodoGroup: (id: string) => void
   deleteAllTodoGroups: () => void
@@ -21,10 +20,8 @@ const useTodoGroupStore = create<TodoGroupState>()(
       getTodoGroup: (id: string) =>
         get().todoGroups.find((todoGroup) => todoGroup.id === id),
 
-      getAllTodoGroups: () => get().todoGroups,
-
       addTodoGroup: (todoGroup: ITodoGroup) =>
-        set((state) => ({ todoGroups: { ...state.todoGroups, todoGroup } })),
+        set((state) => ({ todoGroups: [...state.todoGroups, todoGroup] })),
 
       deleteTodoGroup: (id: string) =>
         set((state) => ({

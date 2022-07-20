@@ -19,7 +19,10 @@ const TodosContainer: FunctionComponent<Props> = (props) => {
   )
 
   return (
-    <div style={{ position: "relative" }} ref={todosContainerRef}>
+    <div
+      style={{ position: "relative", margin: "1rem" }}
+      ref={todosContainerRef}
+    >
       {props.children}
     </div>
   )

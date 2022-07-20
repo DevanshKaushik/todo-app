@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { colors, paddings, borderRadius } from "../../constants/styles"
 
-export const StyledAddTodo = styled.form`
+export const StyledAddTodoArea = styled.div`
   position: relative;
   display: flex;
   background-color: ${colors.primaryColor};

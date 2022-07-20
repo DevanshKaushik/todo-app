@@ -6,6 +6,7 @@ import { colors } from "../../constants/styles"
 import { useMenuButton } from "../../hooks/useMenuButton"
 import { IMenuItem, ITodo } from "../../interfaces"
 import useLabelsStore from "../../stores/labels"
+import useMenuStore from "../../stores/menu"
 import LabelPicker from "../LabelPicker"
 import {
   StyledTodo,
@@ -19,7 +20,7 @@ import {
 type Props = {
   todo: ITodo
   width: number
-  onComplete: () => void
+  onComplete: (isChecked: boolean) => void
   onDelete: () => void
   onPin: () => void
   onUnpin: () => void
@@ -35,10 +36,15 @@ const Todo: FunctionComponent<Props> = (props) => {
     } ${props.todo.deadlineDate.getDate()}`
 
   // Setting up the menu items
+  const setMenuVisible = useMenuStore((state) => state.setVisible)
+
   const labelMenuItemDropdown = (
     <LabelPicker
       activeLabelId={props.todo.labelId}
-      onSelect={props.onLabelChange}
+      onSelect={(id) => {
+        props.onLabelChange(id)
+        setMenuVisible(false)
+      }}
     />
   )
 
@@ -111,7 +117,7 @@ const Todo: FunctionComponent<Props> = (props) => {
           <TodoComplete
             type="checkbox"
             checked={props.todo.isComplete}
-            onChange={props.onComplete}
+            onChange={(e) => props.onComplete(e.target.checked)}
           />
           {formattedDate && (
             <TodoDeadline tabIndex={0}>{formattedDate}</TodoDeadline>

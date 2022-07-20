@@ -6,7 +6,6 @@ import { ITodo } from "../interfaces"
 type TodosState = {
   todos: ITodo[]
   getTodo: (id: string) => ITodo | undefined
-  getAllTodos: () => ITodo[]
   addTodo: (todo: ITodo) => void
   deleteTodo: (id: string) => void
   deleteAllTodos: () => void
@@ -15,17 +14,15 @@ type TodosState = {
   setPin: (id: string, isPinned: boolean) => void
 }
 
-const useTodosStore = create<TodosState>()(
+const useTodoStore = create<TodosState>()(
   persist(
     (set, get) => ({
       todos: [],
 
       getTodo: (id: string) => get().todos.find((todo) => todo.id === id),
 
-      getAllTodos: () => get().todos,
-
       addTodo: (todo: ITodo) =>
-        set((state) => ({ todos: { ...state.todos, todo } })),
+        set((state) => ({ todos: [...state.todos, todo] })),
 
       deleteTodo: (id: string) =>
         set((state) => ({
@@ -61,4 +58,4 @@ const useTodosStore = create<TodosState>()(
   )
 )
 
-export default useTodosStore
+export default useTodoStore

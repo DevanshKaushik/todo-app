@@ -78,8 +78,8 @@ const useTodosLayout = (
     const containerHeight =
       columns
         .slice(0)
-        .sort((a, b) => a.height - b.height)
-        .pop()?.height || 0
+        .sort((a, b) => b.height - a.height)
+        .shift()?.height || 0
     todosContainer.style.height = containerHeight + "px"
   }, [columnCount, columnWidth, rowGap, todosContainerRef])
 }

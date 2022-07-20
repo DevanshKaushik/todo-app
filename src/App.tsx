@@ -1,6 +1,5 @@
 import React from "react"
-import { AddTodo, FilterTodo, SideBar, TodoAreas } from "./components"
-import { TodoAreasCategory } from "./components/TodoAreas"
+import { AddTodoArea, FilterTodoArea, SideBar, TodoArea } from "./components"
 import { Menu } from "./core-ui"
 import useMenuStore from "./stores/menu"
 
@@ -10,15 +9,10 @@ const Main = React.memo(() => {
   return (
     <main>
       <div className="Add-Todo-Container">
-        <AddTodo />
-        <FilterTodo />
+        <AddTodoArea />
+        <FilterTodoArea />
       </div>
-      <TodoAreas
-        category={TodoAreasCategory.PINNED}
-        columnGap={30}
-        rowGap={40}
-        columnWidth={340}
-      />
+      <TodoArea columnGap={30} rowGap={40} columnWidth={340} />
     </main>
   )
 })
